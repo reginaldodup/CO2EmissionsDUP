@@ -1,0 +1,34 @@
+<class 'pandas.core.frame.DataFrame'>
+Index: 160826 entries, 0 to 40051
+Data columns (total 26 columns):
+ #   Column             Non-Null Count   Dtype  
+---  ------             --------------   -----  
+ 0   lib_mrq_utac       160826 non-null  object 
+ 1   lib_mod_doss       160826 non-null  object 
+ 2   lib_mod            160826 non-null  object 
+ 3   dscom              160826 non-null  object 
+ 4   cnit               160826 non-null  object 
+ 5   tvv                160826 non-null  object 
+ 6   cod_cbr            160826 non-null  object 
+ 7   hybride            160826 non-null  object 
+ 8   puiss_admin_98     160826 non-null  int64    << ----- int64  
+ 9   puiss_max          160770 non-null  object   << ----- float64 x
+ 10  typ_boite_nb_rapp  160826 non-null  object 
+ 11  conso_urb          160588 non-null  object   << ----- float64 x
+ 12  conso_exurb        160588 non-null  object   << ----- float64 x
+ 13  conso_mixte        160667 non-null  object   << ----- float64 x
+ 14  co2                160667 non-null  float64
+ 15  co_typ_1           159943 non-null  object   << ----- float64 x 
+ 16  hc                 37430 non-null   object   << ----- float64 x 
+ 17  nox                159943 non-null  object   << ----- float64 x 
+ 18  hcnox              122688 non-null  object   << ----- float64 x
+ 19  ptcl               150599 non-null  object   << ----- float64 x 
+ 20  masse_ordma_min    160826 non-null  int64  
+ 21  masse_ordma_max    160826 non-null  int64  
+ 22  champ_v9           160448 non-null  object 
+ 23  date_maj           68977 non-null   object   << 
+ 24  Carrosserie        139946 non-null  object 
+ 25  gamme              139946 non-null  object 
+dtypes: float64(1), int64(3), object(22)
+memory usage: 33.1+ MB
+
