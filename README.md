@@ -1,1 +1,5 @@
-# co2emissions_dup
+# Introduction
+
+## Context
+
+## Objectives
