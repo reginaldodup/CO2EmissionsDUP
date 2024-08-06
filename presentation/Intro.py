@@ -2,13 +2,91 @@ import streamlit as st
 import pickle
 import os
 
+import reveal_slides as rs
+
 # Configs
 st.set_page_config(
     page_title = 'CO2 Emissions',
     layout = 'wide'
 )
 
+sample_markdown = r"""
+## CO2 Emissions
+
+DUP PROMO 2023-2024
+
+---
+## COHORT <!-- .element: class="fragment" data-fragment-index="0" -->
+
+- Clement ARNAUD - Process Engineer - (CFT TEN - PARIS) <!-- .element: class="fragment" data-fragment-index="0" -->
+- Diego GOMEZ-OCHOA - Process Engineer - (REFINING TEN - PARIS) <!-- .element: class="fragment" data-fragment-index="0" -->
+- Presheet DESHPANDE - Technical Safety & Risk Engineer - (GENESIS - LONDON) <!-- .element: class="fragment" data-fragment-index="0" -->
+- Reginaldo MARINHO - Process Engineer - (CFT TEN - PARIS) <!-- .element: class="fragment" data-fragment-index="0" -->
+- Simran MASOOD - Process Engineer - (CFT TEN - PARIS) <!-- .element: class="fragment" data-fragment-index="0" -->
+
+# 
+# 
+
+## PROJECT MENTOR
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- Antoine TARDIVON - Data Scientist - (DataScientest)
+<!-- .element: class="fragment" data-fragment-index="1" -->
+---
+
+# Context
+
+Global transportation sector is a major contributor to greenhouse gas emissions, with passenger cars and vans responsible for
+around 10% of global energy-related CO2 emissions in 2022 according to International Energy Agency (IEA). This substantial
+emission rate significantly affects air quality and contributes to climate change. Therefore, identifying the vehicles emitting
+the most CO2 and other pollutants is crucial for devising effective strategies to mitigate environmental impact. As automotive
+technology evolves, understanding the role of technical characteristics with respect to emissions is vital for promoting the
+development and adoption of cleaner and more efficient vehicles ultimately contributing to the realization of the Net Zero
+Emissions goals by 2050.
+
+---
+## Data
+
+- [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/emissions-de-co2-et-de-polluants-des-vehicules-commercialises-en-france)
+- [European Environment Agency](https://www.eea.europa.eu/en/datahub/datahubitem-view/fa8b1229-3db6-495d-b18e-9c9b3267c02b)
+
+---
+## Project Steps
+
+1. Data Vizualisation <!-- .element: class="fragment" data-fragment-index="1" -->
+1. Pre-processing and Feature Engineering <!-- .element: class="fragment" data-fragment-index="2" -->
+1. Modelling <!-- .element: class="fragment" data-fragment-index="3" -->
+1. Results Summary <!-- .element: class="fragment" data-fragment-index="4" -->
+
+"""
+
 st.write('# CO2 Emissions Estimation Project')
+
+with st.expander('Intro Slides'):
+
+    rs.slides(
+        sample_markdown,
+        # height=900, 
+        theme="moon", # ["black", "black-contrast", "blood", "dracula", "moon", "white", "white-contrast", "league", "beige", "sky", "night", "serif", "simple", "solarized"]
+        config={
+            "width": 1800, 
+            # "height": 600, 
+            "minScale": 0.5, 
+            "center": True, 
+            "maxScale": 1.0, 
+            "margin": 0.2, 
+            "plugins": ["highlight", "katex", "mathjax2", "mathjax3", "notes", "search", "zoom"],
+        }, 
+        # initial_state={
+                        # "indexh": hslidePos, 
+                        # "indexv": vslidePos, 
+                        # "indexf": fragPos, 
+                        # "paused": paused, 
+                        # "overview": overview 
+                        # }, 
+        # markdown_props={"data-separator-vertical":"^--$"}, 
+        # key="foo",
+    )
+
 
 # ABOUT
 # -------------
