@@ -14,6 +14,10 @@ This repository contains the following items:
 
 ## Regression
 
+![image](https://github.com/reginaldodup/CO2EmissionsDUP/blob/main/1_notebooks/_Step3_Modelling/imgs/0-Predicted%20vs%20actual%20value%20for%20the%20Ridge%20Regression%20Model.svg)
+
+## Classification
+
 ### Logistic Regression
 
 ![image](https://github.com/reginaldodup/CO2EmissionsDUP/blob/main/1_notebooks/_Step3_Modelling/imgs/1-Logistic%20Regression%20Results.svg)
