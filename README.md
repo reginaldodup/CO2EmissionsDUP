@@ -1,10 +1,16 @@
 # Introduction
 
-## Context
+This repository was created to present the CO2 Emission Project in the framework of the Data Scientist MLOPS course provided by [DataScientest](https://datascientest.com/en/). Where we completed the following trainning: 
 
-## Objectives
+- [Data Scientist](https://datascientest.com/en/data-scientist-course)
+- [MLOPs](https://datascientest.com/en/ml-ops-course)
 
-# Results
+This repository contains the following items:
+
+- The notebooks used on each steps of the project
+- An Streamlit presentation used in the defense to present the project
+
+# Main Results
 
 ## Regression
 
