@@ -10,6 +10,34 @@ This repository contains the following items:
 - The notebooks used on each steps of the project
 - An Streamlit presentation used in the defense to present the project
 
+## Cohort
+
+- Clement ARNAUD - Process Engineer - (CFT TEN - PARIS)
+- Diego GOMEZ-OCHOA - Process Engineer - (REFINING TEN - PARIS)
+- Presheet DESHPANDE - Technical Safety & Risk Engineer - (GENESIS - LONDON)
+- Reginaldo MARINHO - Process Engineer - (CFT TEN - PARIS)
+- Simran MASOOD - Process Engineer - (CFT TEN - PARIS)
+
+## Project Mentor
+
+- Antoine TARDIVON - Data Scientist - (DataScientest)
+
+## Data used
+
+- [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/emissions-de-co2-et-de-polluants-des-vehicules-commercialises-en-france)
+- [European Environment Agency](https://www.eea.europa.eu/en/datahub/datahubitem-view/fa8b1229-3db6-495d-b18e-9c9b3267c02b)
+
+## Objectives
+
+The main objective is estimating the CO2 emissions of vehicles based on their characteristics. This can be done by
+approaching the problem in two ways:
+
+- Regression Problem: Estimating the values of the CO2 emissions via Linear Regression algorithms to find a value
+as precise as possible.
+
+- Classification Problem: Grouping the CO2 emissions by ranges and trying to predict, based on the vehicle
+characteristics, what group it belongs to.
+
 # Main Results
 
 ## Regression
