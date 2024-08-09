@@ -5,10 +5,7 @@ import os
 import reveal_slides as rs
 
 # Configs
-st.set_page_config(
-    page_title = 'CO2 Emissions',
-    layout = 'wide'
-)
+st.set_page_config(page_title="CO2 Emissions", layout="wide")
 
 sample_markdown = r"""
 ## CO2 Emissions
@@ -59,60 +56,73 @@ Emissions goals by 2050.
 
 """
 
-st.write('# CO2 Emissions Estimation Project')
+st.write("# CO2 Emissions Estimation Project")
 
-with st.expander('Intro Slides'):
+with st.expander("Intro Slides"):
 
     rs.slides(
         sample_markdown,
-        # height=900, 
-        theme="moon", # ["black", "black-contrast", "blood", "dracula", "moon", "white", "white-contrast", "league", "beige", "sky", "night", "serif", "simple", "solarized"]
+        # height=900,
+        theme="moon",  # ["black", "black-contrast", "blood", "dracula", "moon", "white", "white-contrast", "league", "beige", "sky", "night", "serif", "simple", "solarized"]
         config={
-            "width": 1800, 
-            # "height": 600, 
-            "minScale": 0.5, 
-            "center": True, 
-            "maxScale": 1.0, 
-            "margin": 0.2, 
-            "plugins": ["highlight", "katex", "mathjax2", "mathjax3", "notes", "search", "zoom"],
-        }, 
+            "width": 1800,
+            # "height": 600,
+            "minScale": 0.5,
+            "center": True,
+            "maxScale": 1.0,
+            "margin": 0.2,
+            "plugins": [
+                "highlight",
+                "katex",
+                "mathjax2",
+                "mathjax3",
+                "notes",
+                "search",
+                "zoom",
+            ],
+        },
         # initial_state={
-                        # "indexh": hslidePos, 
-                        # "indexv": vslidePos, 
-                        # "indexf": fragPos, 
-                        # "paused": paused, 
-                        # "overview": overview 
-                        # }, 
-        # markdown_props={"data-separator-vertical":"^--$"}, 
+        # "indexh": hslidePos,
+        # "indexv": vslidePos,
+        # "indexf": fragPos,
+        # "paused": paused,
+        # "overview": overview
+        # },
+        # markdown_props={"data-separator-vertical":"^--$"},
         # key="foo",
     )
 
 
 # ABOUT
 # -------------
-st.write('## About')
-with st.expander('Group', expanded=True):
+st.write("## About")
+with st.expander("Group", expanded=True):
     col1, col2 = st.columns(2)
-    col1.markdown("""
+    col1.markdown(
+        """
 ### COHORT
 - **Clement ARNAUD** - Process Engineer - (CFT TEN - PARIS)
 - **Diego GOMEZ-OCHOA** - Process Engineer - (REFINING TEN - PARIS)
 - **Presheet DESHPANDE** - Technical Safety & Risk Engineer - (GENESIS - LONDON)
 - **Reginaldo MARINHO** - Process Engineer - (CFT TEN - PARIS)
 - **Simran MASOOD** - Process Engineer - (CFT TEN - PARIS)
-""")
-    col2.markdown("""
+"""
+    )
+    col2.markdown(
+        """
 ### Project Mentor
 - **Antoine TARDIVON** - Data Scientist - (DataScientest)
-""")
+"""
+    )
 
 # INTRODUCTION
 # -------------
-st.write('## Introduction')
+st.write("## Introduction")
 
-with st.expander('Context'):
+with st.expander("Context"):
 
-    st.markdown("""
+    st.markdown(
+        """
 ### Context
 
 Global transportation sector is a major contributor to greenhouse gas emissions, with passenger cars and vans responsible for
@@ -122,15 +132,18 @@ the most CO2 and other pollutants is crucial for devising effective strategies t
 technology evolves, understanding the role of technical characteristics with respect to emissions is vital for promoting the
 development and adoption of cleaner and more efficient vehicles ultimately contributing to the realization of the Net Zero
 Emissions goals by 2050.
-""")
+"""
+    )
 
-    file_path = os.path.join('assets', '0_intro', '0-World CO2 Emissions For Fuel and Land Use.pkl')
-    with open(file_path, 'rb') as f:
+    file_path = os.path.join(
+        "assets", "0_intro", "0-World CO2 Emissions For Fuel and Land Use.pkl"
+    )
+    with open(file_path, "rb") as f:
         fig = pickle.load(f)
     st.plotly_chart(fig, use_container_width=True)
-    
+
     st.markdown(
-"""
+        """
 This project explores two datasets (given below) encompassing a wide array of technical specifications of vehicles, alongside
 their fuel consumption, CO2 emissions, and pollutant emissions, marketed both in France and Europe. Through the application
 of Data Science and Machine Learning techniques, our objective is to explore the relationship between vehicle specifications
@@ -148,13 +161,15 @@ relevant variables to enhance model performance. Lastly, statistical modeling te
 quantify the impact of technical characteristics of vehicles on CO2 emissions. Additionally, machine learning algorithms, such
 as decision trees or random forests, or ensemble learning algorithms such as Bagging and Boosting may be utilized for better
 predictive performance of the model.
-""")
+"""
+    )
 
 # DATA SET SELECTION
 # -------------
 # st.write('## Data Set Selection')
-with st.expander('Data selection'):
-    st.markdown("""
+with st.expander("Data selection"):
+    st.markdown(
+        """
 ### Data Set Selection
 
 To begin our metadata analysis, we have opted to start with the initial dataset sourced from 
@@ -182,4 +197,5 @@ focus especially on dataset between 2012 and 2015 where the CO2 emissions is mea
 decided to not have a too large number of years available as we expect that the technology and the legislation norms evolve
 each years and may impact the prediction.
 
-    """)
+    """
+    )
