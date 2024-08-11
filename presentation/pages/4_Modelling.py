@@ -15,8 +15,16 @@ modelling_dir = os.path.join(notebooks_dir, "_Step3_Modelling")
 # Configs
 st.set_page_config(page_title="CO2 Emissions", layout="wide")
 
+# Load Data (only test is required as train already used to fit model)
+file_path = os.path.join(modelling_dir, "data", "X_test.pkl")
+with open(file_path, "rb") as f:
+    X_test = pickle.load(f)
+file_path = os.path.join(modelling_dir, "data", "y_test.pkl")
+with open(file_path, "rb") as f:
+    y_test = pickle.load(f)
 
-tab1, tab2 = st.tabs(["Regression", "Classification"])
+
+tab1, tab2 = st.tabs(["Linear Regression", "Classification"])
 # -----------------------------------------
 # REGRESSION
 # -----------------------------------------
@@ -84,14 +92,6 @@ target  = pd.cut(
         )
         with open(file_path, "rb") as f:
             model = pickle.load(f)
-        # Load Data (only test is required as train already used to fit model)
-        file_path = os.path.join(modelling_dir, "data", "X_test.pkl")
-        with open(file_path, "rb") as f:
-            X_test = pickle.load(f)
-        file_path = os.path.join(modelling_dir, "data", "y_test.pkl")
-        with open(file_path, "rb") as f:
-            y_test = pickle.load(f)
-
         # Display main results
         col1, col2, col3 = st.columns(3)
         y_pred = model.predict(X_test)
@@ -109,9 +109,55 @@ target  = pd.cut(
         col2.write("### Score")
         col2.write(model.score(X_test, y_test))
 
+    boost_bagging_models_dict = {
+        "AdaBoostClassifier": {
+            "model": "2-AdaBoostClassifier.pkl",
+            "fig": "1-Boosting Results.pkl",
+        },
+        "BaggingClassifier": {
+            "model": "2-BaggingClassifier.pkl",
+            "fig": "1-Bagging Results.pkl",
+        },
+        "RESULTS SUMMARY": {
+            "model": "2-AdaBoostClassifier.pkl",
+            "fig": "1-Results Summary Boosting and Bagging.pkl",
+        },
+    }
+
     st.write("# Boosting and Bagging")
     with st.expander("Boosting and Bagging"):
-        st.write("to be developped")
+        options1 = [key for key in boost_bagging_models_dict]
+        option1 = st.selectbox("Select the model you want to check:", options1)
+
+        # Load result Graph
+        file_path = os.path.join(
+            modelling_dir, "imgs", boost_bagging_models_dict[option1]["fig"]
+        )
+        with open(file_path, "rb") as f:
+            fig = pickle.load(f)
+        st.plotly_chart(fig, use_container_width=True)
+        # Load Model
+        file_path = os.path.join(
+            modelling_dir, "models", boost_bagging_models_dict[option1]["model"]
+        )
+        with open(file_path, "rb") as f:
+            model = pickle.load(f)
+        # Display main results
+        col1, col2, col3 = st.columns(3)
+        y_pred = model.predict(X_test)
+        cm = pd.crosstab(
+            y_test,
+            y_pred,
+            rownames=["real"],
+            colnames=["predicted"],
+            # normalize='columns'
+        )
+
+        col1.write("### Confusion Matrix")
+        col1.write(cm)
+
+        col2.write("### Score")
+        col2.write(model.score(X_test, y_test))
 
     grid_search_models_dict = {
         "K-nearest Neighbors": {
@@ -151,14 +197,6 @@ target  = pd.cut(
         )
         with open(file_path, "rb") as f:
             model = pickle.load(f)
-        # Load Data (only test is required as train already used to fit model)
-        file_path = os.path.join(modelling_dir, "data", "X_test.pkl")
-        with open(file_path, "rb") as f:
-            X_test = pickle.load(f)
-        file_path = os.path.join(modelling_dir, "data", "y_test.pkl")
-        with open(file_path, "rb") as f:
-            y_test = pickle.load(f)
-
         # Display main results
         col1, col2, col3 = st.columns(3)
         y_pred = model.predict(X_test)
@@ -187,4 +225,28 @@ target  = pd.cut(
 
     st.write("# Voting Classifier")
     with st.expander("Grid Search Results"):
-        st.write("# To be developped")
+        # Load result Graph
+        file_path = os.path.join(modelling_dir, "imgs", "1-Voting Results.pkl")
+        with open(file_path, "rb") as f:
+            fig = pickle.load(f)
+        st.plotly_chart(fig, use_container_width=True)
+        # Load Model
+        file_path = os.path.join(modelling_dir, "models", "2-Voting Classifier.pkl")
+        with open(file_path, "rb") as f:
+            model = pickle.load(f)
+        # Display main results
+        col1, col2, col3 = st.columns(3)
+        y_pred = model.predict(X_test)
+        cm = pd.crosstab(
+            y_test,
+            y_pred,
+            rownames=["real"],
+            colnames=["predicted"],
+            # normalize='columns'
+        )
+
+        col1.write("### Confusion Matrix")
+        col1.write(cm)
+
+        col2.write("### Score")
+        col2.write(model.score(X_test, y_test))
