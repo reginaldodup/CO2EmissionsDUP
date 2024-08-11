@@ -29,13 +29,70 @@ tab1, tab2 = st.tabs(["Linear Regression", "Classification"])
 # REGRESSION
 # -----------------------------------------
 with tab1:
-    st.write("# To be developped")
+    st.write("## Linear Regression Problem Definition")
+    with st.expander("Definition"):
+        st.markdown(
+            r"""
+The usual simple linear regression model is the following:
+
+$y=β_0+β_1x+ε$  
+
+In our case:   
+* $y$ is the `CO2 emission`,  
+* $x$ is a continuous, quantitative, explanatory variable,  
+* $ε$ is a random error term that follows the normal distribution of zero mean and standard deviation σ.
+
+The regression model will estimate the coefficients $β_0$ and $β_1$ with $\tilde{β}_0$ and $\tilde{β}_1$, allowing us to calculate the values $\tilde{y}=\tilde{β}_0+\tilde{β}_1x$.
+ 
+Residues are defined by $ε = y - \tilde{y}$.
+
+Regularized Linear Regressions are also used in this study, for details refer to Notebook MASTER_Linear Regression under _Step3_Modelling folder in our github. 
+"""
+        )
+
+    simple_lr_dict = {
+        "Linear Regression (Standard Scaler)": {
+            "model": "0-Linear Regression (Standard Scaler).pkl",
+            "fig": "0-Linear Regression (Standard Scaler).pkl",
+        },
+        "Linear Regression (Robust Scaler)": {
+            "model": "0-Linear Regression (Robust Scaler).pkl",
+            "fig": "0-Linear Regression (Robust Scaler).pkl",
+        },
+    }
+
+    st.write("## Simple Linear Regression")
+    with st.expander("Simple Linear Regression"):
+        opts0 = [key for key in simple_lr_dict]
+        opt0 = st.selectbox("Select the model you want to check:", opts0)
+        # Load result Graph
+        file_path = os.path.join(
+            modelling_dir,
+            "imgs",
+            simple_lr_dict[opt0]["fig"],
+        )
+        with open(file_path, "rb") as f:
+            fig = pickle.load(f)
+        st.plotly_chart(fig, use_container_width=True)
+        # Results Summary
+        file_path = os.path.join(
+            modelling_dir,
+            "models",
+            simple_lr_dict[opt0]["model"],
+        )
+        with open(file_path, "rb") as f:
+            result = pickle.load(f)
+        st.write(result)
+
+    st.write("## Regularized Linear Regression")
+    with st.expander("Regularized Linear Regression"):
+        st.write("to be developped")
 
 # -----------------------------------------
 # CLASSIFICATION
 # -----------------------------------------
 with tab2:
-    st.write("# Classification Problem Definition")
+    st.write("## Classification Problem Definition")
     with st.expander("Definition"):
         st.markdown(
             r"""
@@ -74,7 +131,7 @@ target  = pd.cut(
         },
     }
 
-    st.write("# Simple models")
+    st.write("## Simple models")
     with st.expander("Simple Models"):
         options0 = [key for key in simple_models_dict]
         option0 = st.selectbox("Select the model you want to check:", options0)
@@ -124,7 +181,7 @@ target  = pd.cut(
         },
     }
 
-    st.write("# Boosting and Bagging")
+    st.write("## Boosting and Bagging")
     with st.expander("Boosting and Bagging"):
         options1 = [key for key in boost_bagging_models_dict]
         option1 = st.selectbox("Select the model you want to check:", options1)
@@ -179,7 +236,7 @@ target  = pd.cut(
         },
     }
 
-    st.write("# Grid Search")
+    st.write("## Grid Search")
     with st.expander("Grid Search Results"):
         list_of_options = [key for key in grid_search_models_dict]
         option = st.selectbox("Select the model you want to check:", list_of_options)
@@ -223,7 +280,7 @@ target  = pd.cut(
         col3.write("### Parameters Ranking")
         col3.write(df)
 
-    st.write("# Voting Classifier")
+    st.write("## Voting Classifier")
     with st.expander("Grid Search Results"):
         # Load result Graph
         file_path = os.path.join(modelling_dir, "imgs", "1-Voting Results.pkl")
