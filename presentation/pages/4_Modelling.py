@@ -84,9 +84,75 @@ Regularized Linear Regressions are also used in this study, for details refer to
             result = pickle.load(f)
         st.write(result)
 
+    # Penalized Linear Regression dict
+    pen_lr_dict = {
+        "Lasso": {
+            "model": "0-Lasso.pkl",
+            "fig": "0-Lasso Regression (alpha=1).pkl",
+            "result": "0-Results Lasso Regression.pkl",
+        },
+        "LassoCV": {
+            "model": "0-LassoCV.pkl",
+            "fig": "0-LassoCV (best alpha).pkl",
+            "result": "0-Results LassoCV.pkl",
+        },
+        "RidgeCV": {
+            "model": "0-RidgeCV.pkl",
+            "fig": "0-Ridge Regression.pkl",
+            "result": "0-Results RidgeCV.pkl",
+        },
+        "ElasticNetCV": {
+            "model": "0-ElasticNetCV.pkl",
+            "fig": "0-ElasticNetCV (best alpha).pkl",
+            "result": "0-Result ElasticNetCV.pkl",
+        },
+        "RESULT SUMMARY": {
+            "model": "0-RidgeCV.pkl",
+            "fig": "0-Regression Models Results Summary.pkl",
+            "result": "0-Results RidgeCV.pkl",
+        },
+    }
+
     st.write("## Regularized Linear Regression")
     with st.expander("Regularized Linear Regression"):
-        st.write("to be developped")
+        opts1 = [key for key in pen_lr_dict]
+        opt1 = st.selectbox("Select the model you want to check:", opts1)
+        # Load result Graph
+        file_path = os.path.join(
+            modelling_dir,
+            "imgs",
+            pen_lr_dict[opt1]["fig"],
+        )
+        with open(file_path, "rb") as f:
+            fig = pickle.load(f)
+        st.plotly_chart(fig, use_container_width=True)
+        col1, col2, col3 = st.columns(3)
+        # Params
+        file_path = os.path.join(
+            modelling_dir,
+            "models",
+            pen_lr_dict[opt1]["model"],
+        )
+        with open(file_path, "rb") as f:
+            model = pickle.load(f)
+        col1.write("### Parameters")
+        col1.write(model.get_params())
+        # Results Summary
+        file_path = os.path.join(
+            modelling_dir,
+            "models",
+            pen_lr_dict[opt1]["result"],
+        )
+        with open(file_path, "rb") as f:
+            result = pickle.load(f)
+        col2.write("### Results")
+        col2.write(result)
+        col3.write("### Alpha")
+        if opt1 == opts1[0]:
+            col3.write(model.get_params()["alpha"])
+        else:
+            col3.write(model.alpha_)
+
 
 # -----------------------------------------
 # CLASSIFICATION
