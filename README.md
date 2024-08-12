@@ -73,10 +73,10 @@ characteristics, what group it belongs to.
 
 ## Classification
 
-### Logistic Regression
+### Simple Classification
 
-![image](https://github.com/reginaldodup/CO2EmissionsDUP/blob/main/1_notebooks/_Step3_Modelling/imgs/1-Logistic%20Regression%20Results.svg)
+![image](https://github.com/reginaldodup/CO2EmissionsDUP/blob/main/1_notebooks/_Step3_Modelling/imgs/1-Results%20Summary%20Simple%20Classification.pkl)
 
-### SVM Regression
+### Grid Search
 
-![image](https://github.com/reginaldodup/CO2EmissionsDUP/blob/main/1_notebooks/_Step3_Modelling/imgs/1-SVM%20Results.svg)
+![image](https://github.com/reginaldodup/CO2EmissionsDUP/blob/main/1_notebooks/_Step3_Modelling/imgs/1-Results%20Summary%20Grid%20Search.pkl)
