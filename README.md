@@ -47,7 +47,7 @@ characteristics, what group it belongs to.
 > ### Linux
 >
 > * Create a virtual environement: ```python3 -m venv venv```
-> * Activate virtual environement: ```source venv\bin\activate```
+> * Activate virtual environement: ```source venv/bin/activate```
 > * Install requirements: ```pip3 install -r requirements.txt```
 > 
 > ### Windows
@@ -60,6 +60,10 @@ characteristics, what group it belongs to.
 
 * Change to presentation folder: ```cd presentation```
 * Install requirements: ```streamlit run Intro.py```
+
+## Run jupyterlab
+
+* ```jupyter-lab .```
 
 # Main Results
 
