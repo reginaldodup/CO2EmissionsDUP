@@ -38,6 +38,29 @@ as precise as possible.
 - Classification Problem: Grouping the CO2 emissions by ranges and trying to predict, based on the vehicle
 characteristics, what group it belongs to.
 
+# How to download and use ?
+
+## Download and installation of requirements
+
+* Clone the repository: ```git clone https://github.com/reginaldodup/CO2EmissionsDUP.git```
+
+> ### Linux
+>
+> * Create a virtual environement: ```python3 -m venv venv```
+> * Activate virtual environement: ```source venv\bin\activate```
+> * Install requirements: ```pip3 install -r requirements.txt```
+> 
+> ### Windows
+> 
+> * Create a virtual environement: ```python -m venv venv```
+> * Activate virtual environement: ```venv\Script\activate.bat```
+> * Install requirements: ```pip install -r requirements.txt```
+
+## Run presentation
+
+* Change to presentation folder: ```cd presentation```
+* Install requirements: ```streamlit run Intro.py```
+
 # Main Results
 
 ## Regression
