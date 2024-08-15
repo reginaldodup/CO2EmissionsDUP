@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import sys
+import pickle
 
 import streamlit as st
 
@@ -200,7 +201,12 @@ df['nbr_reports'] = nbr_reports
 st.write("## Additional Dataviz")
 with st.expander("Additional Dataviz"):
     st.write("#### Quantitative Variables")
-    st.image(os.path.join(pre_processing_dir, "imgs", "0-CORRELATION MATRIX.svg"))
+
+    file_path = os.path.join(pre_processing_dir, "imgs", "0-CORRELATION MATRIX.pkl")
+    with open(file_path, "rb") as f:
+        fig = pickle.load(f)
+    st.plotly_chart(fig, use_container_width=True)
+
     st.write("##### Box Plots")
     st.image(os.path.join(pre_processing_dir, "imgs", "BOX PLOTS.png"))
 
