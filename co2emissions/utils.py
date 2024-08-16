@@ -2,6 +2,7 @@ def list_to_cols(l, num_cols):
     """
     This function displays a list (l) in num_cols columns
     """
+    l = [x if isinstance(x, str) else str(x) for x in l] # make sure only str
     num_lines = len(l) // num_cols + 1  # Number of lines
     max_len = len(max(l, key=len))  # Maximum string len
     result = ""
