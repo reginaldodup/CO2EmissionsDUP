@@ -10,10 +10,12 @@ st.set_page_config(page_title="CO2 Emissions", layout="wide")
 sample_markdown = r"""
 ## CO2 Emissions
 
-DUP PROMO 2023-2024
+### Data Upskilling Program
+
+PROMO 2023-2024
 
 ---
-## COHORT <!-- .element: class="fragment" data-fragment-index="0" -->
+## COHORT
 
 - Clement ARNAUD - Process Engineer - (CFT TEN - PARIS) <!-- .element: class="fragment" data-fragment-index="0" -->
 - Diego GOMEZ-OCHOA - Process Engineer - (REFINING TEN - PARIS) <!-- .element: class="fragment" data-fragment-index="0" -->
@@ -30,17 +32,6 @@ DUP PROMO 2023-2024
 <!-- .element: class="fragment" data-fragment-index="1" -->
 ---
 
-# Context
-
-Global transportation sector is a major contributor to greenhouse gas emissions, with passenger cars and vans responsible for
-around 10% of global energy-related CO2 emissions in 2022 according to International Energy Agency (IEA). This substantial
-emission rate significantly affects air quality and contributes to climate change. Therefore, identifying the vehicles emitting
-the most CO2 and other pollutants is crucial for devising effective strategies to mitigate environmental impact. As automotive
-technology evolves, understanding the role of technical characteristics with respect to emissions is vital for promoting the
-development and adoption of cleaner and more efficient vehicles ultimately contributing to the realization of the Net Zero
-Emissions goals by 2050.
-
----
 ## Data
 
 - [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/emissions-de-co2-et-de-polluants-des-vehicules-commercialises-en-france)
@@ -52,20 +43,19 @@ Emissions goals by 2050.
 1. Data Vizualisation <!-- .element: class="fragment" data-fragment-index="1" -->
 1. Pre-processing and Feature Engineering <!-- .element: class="fragment" data-fragment-index="2" -->
 1. Modelling <!-- .element: class="fragment" data-fragment-index="3" -->
-1. Results Summary <!-- .element: class="fragment" data-fragment-index="4" -->
 
 """
 
 st.write("# CO2 Emissions Estimation Project")
 
-with st.expander("Intro Slides"):
+with st.expander("Intro Slides", expanded=True):
 
     rs.slides(
         sample_markdown,
-        # height=900,
-        theme="moon",  # ["black", "black-contrast", "blood", "dracula", "moon", "white", "white-contrast", "league", "beige", "sky", "night", "serif", "simple", "solarized"]
+        height=800,
+        theme="white",  # ["black", "black-contrast", "blood", "dracula", "moon", "white", "white-contrast", "league", "beige", "sky", "night", "serif", "simple", "solarized"]
         config={
-            "width": 1800,
+            "width": 1600,
             # "height": 600,
             "minScale": 0.5,
             "center": True,
@@ -96,7 +86,7 @@ with st.expander("Intro Slides"):
 # ABOUT
 # -------------
 st.write("## About")
-with st.expander("Group", expanded=True):
+with st.expander("Group"):
     col1, col2 = st.columns(2)
     col1.markdown(
         """
@@ -164,9 +154,18 @@ predictive performance of the model.
 """
     )
 
+
+st.write("## Objective")
+with st.expander("Objective"):
+    st.markdown(r"""
+The main objective is estimating the `CO2 emissions` of vehicles based on their characteristics.
+""")
+    st.image("assets\imgs\objective.svg")
+
+
 # DATA SET SELECTION
 # -------------
-# st.write('## Data Set Selection')
+st.write('## Data Set Selection')
 with st.expander("Data selection"):
     st.markdown(
         """
