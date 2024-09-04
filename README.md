@@ -59,7 +59,7 @@ characteristics, what group it belongs to.
 ## Run presentation
 
 * Change to presentation folder: ```cd presentation```
-* Install requirements: ```streamlit run Intro.py```
+* Run presentation: ```streamlit run Intro.py```
 
 ## Run jupyterlab
 
