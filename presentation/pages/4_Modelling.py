@@ -24,6 +24,7 @@ with open(file_path, "rb") as f:
     y_test = pickle.load(f)
 
 
+st.write("# Modelling")
 tab1, tab2 = st.tabs(["Linear Regression", "Classification"])
 # -----------------------------------------
 # REGRESSION

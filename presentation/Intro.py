@@ -107,7 +107,7 @@ with st.expander("Group"):
 
 # INTRODUCTION
 # -------------
-st.write("## Introduction")
+st.write("## Context")
 
 with st.expander("Context"):
 

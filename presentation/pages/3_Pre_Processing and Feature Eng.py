@@ -12,6 +12,7 @@ pre_processing_dir = os.path.join(notebooks_dir, "_Step2-Preprocessing")
 
 # Configs
 st.set_page_config(page_title="CO2 Emissions", layout="wide")
+st.write("# Pre-Processing and Feature Engineering")
 st.write("## Pre-Processing")
 with st.expander("Pre-processing"):
     st.write("#### `tvv` trailing spaces")

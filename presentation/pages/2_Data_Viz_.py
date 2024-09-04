@@ -168,7 +168,7 @@ with st.expander("Data selection"):
     st.plotly_chart(fig, use_container_width=True)
 
 
-st.write("# Correlation")
+st.write("## Correlation")
 st.markdown(
     """
 In the section below you can see the variable coorelations in relation to our target variable `CO2 Emissions`
