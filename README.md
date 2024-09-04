@@ -46,20 +46,20 @@ characteristics, what group it belongs to.
 
 > ### Linux
 >
-> * Create a virtual environement: ```python3 -m venv venv```
-> * Activate virtual environement: ```source venv/bin/activate```
+> * Create a virtual environment: ```python3 -m venv venv```
+> * Activate virtual environment: ```source venv/bin/activate```
 > * Install requirements: ```pip3 install -r requirements.txt```
 > 
 > ### Windows
 > 
-> * Create a virtual environement: ```python -m venv venv```
-> * Activate virtual environement: ```venv\Script\activate.bat```
+> * Create a virtual environment: ```python -m venv venv```
+> * Activate virtual environment: ```venv\Script\activate.bat```
 > * Install requirements: ```pip install -r requirements.txt```
 
 ## Run presentation
 
 * Change to presentation folder: ```cd presentation```
-* Install requirements: ```streamlit run Intro.py```
+* Run presentation: ```streamlit run Intro.py```
 
 ## Run jupyterlab
 
