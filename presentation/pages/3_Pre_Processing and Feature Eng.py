@@ -64,6 +64,11 @@ type. We consider that these cars where wrongly entered, and we correct ‘ES’
 > ```
 """
     )
+
+# FEATURE ENGINEERING
+# ---
+st.write("## Feature Engineering")
+with st.expander("Feature Engineering"):
     st.write("#### `hcnox` Correction")
     st.markdown(
         """
@@ -149,10 +154,6 @@ df.loc[:,'nox'] = df[['nox']].where(
     )
 
 
-# FEATURE ENGINEERING
-# ---
-st.write("## Feature Engineering")
-with st.expander("Feature Engineering"):
     st.write("#### `typ_boite_nb_rapp` Separate Gearbox and nb of Reports")
     st.markdown(
         """
