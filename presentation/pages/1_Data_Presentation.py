@@ -19,7 +19,8 @@ st.write("# Data Presentation")
 # ).fillna("-")
 #
 # st.table(df_info)
-df = pd.read_csv(os.path.join(data_dir, "0-raw", "FRANCE", "data_merged.csv"))
+# df = pd.read_csv(os.path.join(data_dir, "0-raw", "FRANCE", "data_merged.csv"))
+df = pd.read_csv(os.path.join(data_dir, "1-processed", "data_2012_1015.csv"))
 
 var_dict = {
     "CATEGORICAL": {
@@ -279,6 +280,101 @@ passengers and bags)
         },
     },
 }
+
+
+st.write("## Overview")
+with st.expander("Overview"):
+    # for key in var_dict['CATEGORICAL']:
+    variablespath = os.path.join(data_dir, "0-raw", "FRANCE", "variables.xlsx")
+    df2 = pd.read_excel(variablespath, "CORRESP", index_col="#")
+    missing_vals = []
+    unique_vals = []
+    for col in df2.Variable:
+        if col in df.columns:
+            missing = df[col].isna().sum()
+            unvals = len(df[col].unique())
+        else:
+            missing = "N/A"
+            unvals = "N/A"
+        missing_vals.append(missing)
+        unique_vals.append(unvals)
+    
+    df2["Missing"] = missing_vals
+    df2["Unique"] = unique_vals
+    st.write(df2)
+    col1, col2 = st.columns(2)
+    col1.write("#### Initial Dataset")
+    col1.code("""
+<class 'pandas.core.frame.DataFrame'>
+Index: 159780 entries, 0 to 40051
+Data columns (total 26 columns):
+ #   Column             Non-Null Count   Dtype  
+---  ------             --------------   -----  
+ 0   lib_mrq_utac       159780 non-null  object 
+ 1   lib_mod_doss       159780 non-null  object 
+ 2   lib_mod            159780 non-null  object 
+ 3   dscom              159780 non-null  object 
+ 4   tvv                159780 non-null  object 
+ 5   cod_cbr            159780 non-null  object 
+ 6   hybride            159780 non-null  object 
+ 7   puiss_admin_98     159780 non-null  int64  
+ 8   puiss_max          159724 non-null  object 
+ 9   typ_boite_nb_rapp  159780 non-null  object 
+ 10  conso_urb          159543 non-null  object 
+ 11  conso_exurb        159543 non-null  object 
+ 12  conso_mixte        159622 non-null  object 
+ 13  co2                159622 non-null  float64
+ 14  co_typ_1           159090 non-null  object 
+ 15  hc                 36813 non-null   object 
+ 16  nox                159090 non-null  object 
+ 17  hcnox              122452 non-null  object 
+ 18  ptcl               150181 non-null  object 
+ 19  masse_ordma_min    159780 non-null  int64  
+ 20  masse_ordma_max    159780 non-null  int64  
+ 21  champ_v9           159595 non-null  object 
+ 22  date_maj           68352 non-null   object 
+ 23  year               159780 non-null  int64  
+ 24  Carrosserie        138900 non-null  object 
+ 25  gamme              138900 non-null  object 
+dtypes: float64(1), int64(4), object(21)
+memory usage: 32.9+ MB
+              """)
+    col2.write("#### Final Dataset")
+    col2.code("""
+<class 'pandas.core.frame.DataFrame'>
+Index: 159780 entries, 0 to 40051
+Data columns (total 26 columns):
+ #   Column             Non-Null Count   Dtype  
+---  ------             --------------   -----  
+ 0   lib_mrq_utac       159780 non-null  object 
+ 1   lib_mod_doss       159780 non-null  object 
+ 2   lib_mod            159780 non-null  object 
+ 3   dscom              159780 non-null  object 
+ 4   tvv                159780 non-null  object 
+ 5   cod_cbr            159780 non-null  object 
+ 6   hybride            159780 non-null  object 
+ 7   puiss_admin_98     159780 non-null  float64
+ 8   puiss_max          159724 non-null  float64
+ 9   typ_boite_nb_rapp  159780 non-null  object 
+ 10  conso_urb          159543 non-null  float64
+ 11  conso_exurb        159543 non-null  float64
+ 12  conso_mixte        159622 non-null  float64
+ 13  co2                159622 non-null  float64
+ 14  co_typ_1           159090 non-null  float64
+ 15  hc                 36813 non-null   float64
+ 16  nox                159090 non-null  float64
+ 17  hcnox              122452 non-null  float64
+ 18  ptcl               150181 non-null  float64
+ 19  masse_ordma_min    159780 non-null  float64
+ 20  masse_ordma_max    159780 non-null  float64
+ 21  champ_v9           159595 non-null  object 
+ 22  date_maj           68352 non-null   object 
+ 23  year               159780 non-null  int64  
+ 24  Carrosserie        138900 non-null  object 
+ 25  gamme              138900 non-null  object 
+dtypes: float64(13), int64(1), object(12)
+memory usage: 32.9+ MB
+              """)
 
 
 st.write("## Categorical Variables")
