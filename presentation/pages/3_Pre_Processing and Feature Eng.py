@@ -65,6 +65,8 @@ type. We consider that these cars where wrongly entered, and we correct ‘ES’
 """
     )
 
+    st.image(os.path.join(pre_processing_dir, "imgs", "cod_cbr.png"))
+
 # FEATURE ENGINEERING
 # ---
 st.write("## Feature Engineering")
@@ -198,9 +200,74 @@ df['nbr_reports'] = nbr_reports
     )
     col2.image(os.path.join(pre_processing_dir, "imgs", "Number of Reports.png"))
 
+st.write("## Final Dataset")
+with st.expander("Final Dataset"):
+
+    col1, col2 = st.columns(2)
+    col1.write("#### Initial Dataset")
+    col1.code("""
+<class 'pandas.core.frame.DataFrame'>
+Index: 159780 entries, 0 to 40051
+Data columns (total 26 columns):
+ #   Column             Non-Null Count   Dtype  
+---  ------             --------------   -----  
+ 0   lib_mrq_utac       159780 non-null  object 
+ 1   lib_mod_doss       159780 non-null  object 
+ 2   lib_mod            159780 non-null  object 
+ 3   dscom              159780 non-null  object 
+ 4   tvv                159780 non-null  object 
+ 5   cod_cbr            159780 non-null  object 
+ 6   hybride            159780 non-null  object 
+ 7   puiss_admin_98     159780 non-null  float64
+ 8   puiss_max          159724 non-null  float64
+ 9   typ_boite_nb_rapp  159780 non-null  object 
+ 10  conso_urb          159543 non-null  float64
+ 11  conso_exurb        159543 non-null  float64
+ 12  conso_mixte        159622 non-null  float64
+ 13  co2                159622 non-null  float64
+ 14  co_typ_1           159090 non-null  float64
+ 15  hc                 36813 non-null   float64
+ 16  nox                159090 non-null  float64
+ 17  hcnox              122452 non-null  float64
+ 18  ptcl               150181 non-null  float64
+ 19  masse_ordma_min    159780 non-null  float64
+ 20  masse_ordma_max    159780 non-null  float64
+ 21  champ_v9           159595 non-null  object 
+ 22  date_maj           68352 non-null   object 
+ 23  year               159780 non-null  int64  
+ 24  Carrosserie        138900 non-null  object 
+ 25  gamme              138900 non-null  object 
+dtypes: float64(13), int64(1), object(12)
+memory usage: 32.9+ MB
+              """)
+    col2.write("#### Final Dataset")
+    col2.code("""
+<class 'pandas.core.frame.DataFrame'>
+Index: 103248 entries, 0 to 159779
+Data columns (total 14 columns):
+ #   Column           Non-Null Count   Dtype  
+---  ------           --------------   -----  
+ 0   lib_mrq_utac     103248 non-null  object 
+ 1   cod_cbr          103248 non-null  object 
+ 2   hybride          103248 non-null  object 
+ 3   puiss_max        103248 non-null  float64
+ 4   conso_mixte      103248 non-null  float64
+ 5   co2              103248 non-null  float64
+ 6   co_typ_1         103248 non-null  float64
+ 7   hc               103248 non-null  float64
+ 8   nox              103248 non-null  float64
+ 9   hcnox            103248 non-null  float64
+ 10  masse_ordma_max  103248 non-null  float64
+ 11  year             103248 non-null  int64  
+ 12  type_of_gearbox  103248 non-null  object 
+ 13  nbr_reports      103248 non-null  object 
+dtypes: float64(8), int64(1), object(5)
+memory usage: 11.8+ MB
+              """)
+
 # ADDITIONAL DTAVIZ AFTER CORRECTION
 # ---
-st.write("## Additional Dataviz")
+st.write("## Final Correlation Matrix")
 with st.expander("Additional Dataviz"):
     st.write("#### Quantitative Variables")
 
@@ -208,12 +275,3 @@ with st.expander("Additional Dataviz"):
     with open(file_path, "rb") as f:
         fig = pickle.load(f)
     st.plotly_chart(fig, use_container_width=True)
-
-    st.write("##### Box Plots")
-    st.image(os.path.join(pre_processing_dir, "imgs", "BOX PLOTS.png"))
-
-    st.write("#### Categorical Variables")
-    st.image(os.path.join(pre_processing_dir, "imgs", "co2_vs_brand_and_fuel.png"))
-    st.image(os.path.join(pre_processing_dir, "imgs", "lib_mrq_utac.png"))
-    st.image(os.path.join(pre_processing_dir, "imgs", "cod_cbr.png"))
-    st.image(os.path.join(pre_processing_dir, "imgs", "type_of_gearbox.png"))
