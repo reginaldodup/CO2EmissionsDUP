@@ -11,6 +11,8 @@ from co2emissions.config import data_dir, notebooks_dir, presentation_dir
 
 modelling_dir = os.path.join(notebooks_dir, "_Step3_Modelling")
 
+clean_data = os.path.join(data_dir, "2-cleaned", "data_phase_2.csv")
+df_clean = pd.read_csv(clean_data)
 
 # Configs
 st.set_page_config(page_title="CO2 Emissions", layout="wide")
@@ -31,25 +33,86 @@ tab1, tab2 = st.tabs(["Linear Regression", "Classification"])
 # -----------------------------------------
 with tab1:
     st.write("## Linear Regression Problem Definition")
-    with st.expander("Definition"):
+    with st.expander("Definition "):
         st.markdown(
             r"""
-The usual simple linear regression model is the following:
+The Multiple Linear Regression consists in modelling a relation between the **target variable $y$ (CO2 emission)** and **multiple explanatory variables $x_p$**: 
 
-$y=β_0+β_1x+ε$  
+$$y_i=β_0+β_1x_{i,1}+β_2x_{i,2}+⋯+β_px_{i,p}+ε_i$$
 
-In our case:   
+where:
+
 * $y$ is the `CO2 emission`,  
-* $x$ is a continuous, quantitative, explanatory variable,  
+* $x_p$ are a continuous qualitative variables,
+* $β_p$ are the linear regression coefficients,
 * $ε$ is a random error term that follows the normal distribution of zero mean and standard deviation σ.
 
-The regression model will estimate the coefficients $β_0$ and $β_1$ with $\tilde{β}_0$ and $\tilde{β}_1$, allowing us to calculate the values $\tilde{y}=\tilde{β}_0+\tilde{β}_1x$.
+The regression model will estimate the coefficients $β_p$.
  
 Residues are defined by $ε = y - \tilde{y}$.
 
 Regularized Linear Regressions are also used in this study, for details refer to Notebook MASTER_Linear Regression under _Step3_Modelling folder in our github. 
 """
         )
+
+    st.write("## Definition of the Linear Regression metrics")
+    with st.expander("Definition"):
+        st.markdown(r"""
+The evaluation of the regression model is done by using 4 metrics:
+                    
+* Mean Squared Error (MSE):""") 
+        st.latex(r'''MSE =
+            \frac{1}n
+            \sum
+            \left(y - \hat{y}\right)^{2}
+            ''')
+
+        st.markdown(r"""* Mean Absolute Error (MAE):""") 
+        st.latex(r'''MAE =
+            \frac{1}n
+            \sum
+            \lvert(y - \hat{y}\rvert)
+            ''')
+
+        st.markdown(r"""* Root Mean Square Error (RMSE):""") 
+        st.latex(r'''RMSE =
+            \sqrt{
+            \frac{1}n
+            \sum
+            \left(y - \hat{y}\right)^{2}}
+            ''')
+        
+        st.markdown(r"""* R-squared Value""")
+
+    st.write("## Preparation of the Dataset for the Linear Regression")
+    with st.expander("Prepation of the Dataset"):
+        st.markdown(r"""
+        The first step consist in transforming the qualitative variables into a dummy variables to be able to use it. To do that, the function **get_dummies** is used. The function has been applied to fourth variables:
+        
+        * cod_cbr (type of fuel)
+        * Hybrid (Yes/No)
+        * Type of Gearbox
+        * Number of reports on the gearbox            
+                    
+        This transformation allows to go from **4 categorical variables to 31 dummy variables**. After removing the target vartiables, **the dataset contains 38 variables**.
+
+        The second step consist in separating the dataset into a training and a test set. In this case, we are not able to use **the train_test_split function** because it has no sense to use the values from the year 2015 to predict dat from earler year.
+        Typically, the test set represents between 20% and 30% of the dataset. Let's observe the proportion of the year in our dataset:
+                    
+        """)
+
+        df_repart = pd.DataFrame(df_clean["year"].value_counts(normalize=True))
+        df_repart = df_repart.sort_values(by = ['year'])
+        df_repart["proportion"] = [f"{p:.1%}" for p in df_repart.proportion]
+        
+        st.code(df_repart)
+        st.markdown(r""" 
+        
+        The last year 2015 represents almost 20% of our dataset. Therefore all the data from the year 2015 is used for the test set and the others years are used for the train set.
+        
+        Finally, the training set and test set are standardized using **the function StandardScaler**. The scaler is fitted on the training set and then transform the training set and the test set.
+                    
+        """)
 
     simple_lr_dict = {
         "Linear Regression (Standard Scaler)": {
