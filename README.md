@@ -77,6 +77,14 @@ characteristics, what group it belongs to.
 
 ![image](https://github.com/reginaldodup/CO2EmissionsDUP/blob/main/1_notebooks/_Step3_Modelling/imgs/1-Results%20Summary%20Simple%20Classification.svg)
 
+### Boosting and Bagging
+
+![image](https://github.com/reginaldodup/CO2EmissionsDUP/blob/main/1_notebooks/_Step3_Modelling/imgs/1-Results%20Summary%20Boosting%20and%20Bagging.svg)
+
 ### Grid Search
 
 ![image](https://github.com/reginaldodup/CO2EmissionsDUP/blob/main/1_notebooks/_Step3_Modelling/imgs/1-Results%20Summary%20Grid%20Search.svg)
+
+### Voting Classifier
+
+![image](https://github.com/reginaldodup/CO2EmissionsDUP/blob/main/1_notebooks/_Step3_Modelling/imgs/1-Voting%20Results.svg)
