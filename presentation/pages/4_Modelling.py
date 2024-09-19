@@ -32,7 +32,7 @@ tab1, tab2 = st.tabs(["Linear Regression", "Classification"])
 # REGRESSION
 # -----------------------------------------
 with tab1:
-    st.write("## Linear Regression Problem Definition")
+    st.write("## Problem Definition")
     with st.expander("Definition "):
         st.markdown(
             r"""
@@ -55,7 +55,7 @@ Regularized Linear Regressions are also used in this study, for details refer to
 """
         )
 
-    st.write("## Definition of the Linear Regression metrics")
+    st.write("## Performance Criteria")
     with st.expander("Definition"):
         st.markdown(r"""
 The evaluation of the regression model is done by using 4 metrics:
@@ -244,6 +244,45 @@ target  = pd.cut(
 """
         )
 
+    st.write("## Performance Criteria")
+    with st.expander("Definition"):
+        col1, col2 = st.columns(2)
+        col1.markdown("""
+#### Confusion Matrix
+- True Positives (TP): Number of samples correctly predicted as ‘positive’. 
+- False Positives (FP): Number of samples wrongly predicted as ‘positive’. 
+- True Negatives (TN): Number of samples correctly predicted as ‘negative’. 
+- False Negatives (FN): Number of samples wrongly predicted as ‘negative’. 
+
+| -    | +ve  | -ve  |
+| ---- | ---- | ---- |
+| +ve  | TP   | FP   |
+| -ve  | FN   | TN   |
+        """)
+        
+        col2.markdown("""
+#### Accuracy
+The accuracy metric computes how many times a model made a correct prediction across the entire dataset. This can be a reliable metric only if the dataset is class-balanced; that is, each class of the dataset has the same number of samples.
+
+#### Recall
+Recall measures how many of the positive class samples present in the dataset were correctly identified by the model.
+
+$$ Recall = {TP \over TP + FN} $$
+
+#### F1 Score
+The F1 score is calculated as the harmonic mean of the precision and recall scores, as shown below. It ranges from
+0-100%, and a higher F1 score denotes a better-quality classifier.
+
+$$ F1 Score = {2 \over {{1 \over Precision} + {1 \over Recall}}} $$
+        """)
+        col1.markdown("""
+#### Precision
+Precision measures how many of the “positive” predictions made by the model were correct.
+
+$$ Precision = {TP \over TP + FP} $$
+
+        """)
+    
     simple_models_dict = {
         "Logistic Regression": {
             "model": "2-Logistic Regression.pkl",
